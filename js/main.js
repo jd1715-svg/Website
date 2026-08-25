@@ -30,31 +30,40 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!flagEl) return;
 
   const COUNTRIES = [
-    { name: 'Japan', flag: '\u{1F1EF}\u{1F1F5}' },
-    { name: 'France', flag: '\u{1F1EB}\u{1F1F7}' },
-    { name: 'Brazil', flag: '\u{1F1E7}\u{1F1F7}' },
-    { name: 'Australia', flag: '\u{1F1E6}\u{1F1FA}' },
-    { name: 'Egypt', flag: '\u{1F1EA}\u{1F1EC}' },
-    { name: 'Canada', flag: '\u{1F1E8}\u{1F1E6}' },
-    { name: 'India', flag: '\u{1F1EE}\u{1F1F3}' },
-    { name: 'Kenya', flag: '\u{1F1F0}\u{1F1EA}' },
-    { name: 'Mexico', flag: '\u{1F1F2}\u{1F1FD}' },
-    { name: 'South Korea', flag: '\u{1F1F0}\u{1F1F7}' },
-    { name: 'Germany', flag: '\u{1F1E9}\u{1F1EA}' },
-    { name: 'Argentina', flag: '\u{1F1E6}\u{1F1F7}' },
-    { name: 'Myanmar', flag: '\u{1F1F2}\u{1F1F2}' },
-    { name: 'China', flag: '\u{1F1E8}\u{1F1F3}' },
-    { name: 'United Kingdom', flag: '\u{1F1EC}\u{1F1E7}' },
-    { name: 'South Africa', flag: '\u{1F1FF}\u{1F1E6}' },
-    { name: 'Italy', flag: '\u{1F1EE}\u{1F1F9}' },
-    { name: 'Thailand', flag: '\u{1F1F9}\u{1F1ED}' },
-    { name: 'Peru', flag: '\u{1F1F5}\u{1F1EA}' },
-    { name: 'Nigeria', flag: '\u{1F1F3}\u{1F1EC}' },
-    { name: 'Sweden', flag: '\u{1F1F8}\u{1F1EA}' },
-    { name: 'New Zealand', flag: '\u{1F1F3}\u{1F1FF}' },
-    { name: 'Vietnam', flag: '\u{1F1FB}\u{1F1F3}' },
-    { name: 'Morocco', flag: '\u{1F1F2}\u{1F1E6}' },
+    { name: 'Japan', code: 'JP' },
+    { name: 'France', code: 'FR' },
+    { name: 'Brazil', code: 'BR' },
+    { name: 'Australia', code: 'AU' },
+    { name: 'Egypt', code: 'EG' },
+    { name: 'Canada', code: 'CA' },
+    { name: 'India', code: 'IN' },
+    { name: 'Kenya', code: 'KE' },
+    { name: 'Mexico', code: 'MX' },
+    { name: 'South Korea', code: 'KR' },
+    { name: 'Germany', code: 'DE' },
+    { name: 'Argentina', code: 'AR' },
+    { name: 'Myanmar', code: 'MM' },
+    { name: 'China', code: 'CN' },
+    { name: 'United Kingdom', code: 'GB' },
+    { name: 'South Africa', code: 'ZA' },
+    { name: 'Italy', code: 'IT' },
+    { name: 'Thailand', code: 'TH' },
+    { name: 'Peru', code: 'PE' },
+    { name: 'Nigeria', code: 'NG' },
+    { name: 'Sweden', code: 'SE' },
+    { name: 'New Zealand', code: 'NZ' },
+    { name: 'Vietnam', code: 'VN' },
+    { name: 'Morocco', code: 'MA' },
   ];
+
+  // Flag image files come from Twemoji's open-source flag set, addressed by
+  // the flag emoji's Unicode code points (e.g. JP -> 1f1ef-1f1f5.svg).
+  const flagImageUrl = (isoCode) => {
+    const points = [...isoCode.toUpperCase()]
+      .map((letter) => (0x1f1e6 + letter.charCodeAt(0) - 65).toString(16))
+      .join('-');
+    return `https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/${points}.svg`;
+  };
 
   const ROUNDS = 8;
   const roundEl = document.getElementById('game-round');
@@ -101,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const current = quiz[round];
     roundEl.textContent = `Round ${round + 1} of ${ROUNDS}`;
     scoreEl.textContent = `Score: ${score}`;
-    flagEl.textContent = current.flag;
+    flagEl.src = flagImageUrl(current.code);
 
     const wrongOptions = shuffle(
       COUNTRIES.filter((c) => c.name !== current.name)
