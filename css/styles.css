@@ -1,0 +1,340 @@
+/* ==========================================================================
+   Color palette & base variables
+   Change any value below to update the whole site's color scheme.
+   ========================================================================== */
+:root {
+  --color-bg: #F7F5EE;           /* warm off-white background */
+  --color-bg-alt: #F0E9D4;       /* soft warm tint for alternating sections */
+  --color-navy: #152238;         /* deep navy for headings/body text */
+  --color-navy-soft: #3B4A63;    /* softer navy for secondary text */
+  --color-gold: #C89B3C;         /* warm gold accent */
+  --color-gold-dark: #96742A;    /* darker gold for hover states */
+  --color-white: #FFFFFF;
+  --color-border: #E1D8BC;
+
+  --font-heading: 'Georgia', 'Iowan Old Style', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --max-width: 900px;
+}
+
+/* ==========================================================================
+   Reset & base
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-navy);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-gold-dark);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+section {
+  padding: 4rem 1.5rem;
+}
+
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-alt {
+  background-color: var(--color-bg-alt);
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  color: var(--color-navy);
+  margin-bottom: 1.75rem;
+}
+
+/* ==========================================================================
+   Top navigation
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(251, 250, 246, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--color-navy);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--color-navy-soft);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.nav-links a:hover {
+  color: var(--color-gold-dark);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Hero / About section
+   ========================================================================== */
+.hero {
+  padding-top: 4.5rem;
+}
+
+.hero-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.headshot {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--color-white);
+  box-shadow: 0 4px 18px rgba(31, 45, 61, 0.15);
+}
+
+.hero-name {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  color: var(--color-navy);
+}
+
+.hero-tagline {
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  color: var(--color-gold-dark);
+  font-weight: 600;
+  max-width: 40ch;
+}
+
+.hero-bio {
+  max-width: 62ch;
+  color: var(--color-navy-soft);
+  font-size: 1.05rem;
+}
+
+.hero-bio p + p {
+  margin-top: 1rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  box-shadow: 0 2px 10px rgba(200, 155, 60, 0.35);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-gold-dark);
+}
+
+.btn-secondary {
+  background-color: var(--color-white);
+  color: var(--color-navy);
+  border: 1.5px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-dark);
+}
+
+/* ==========================================================================
+   Education & Certifications
+   ========================================================================== */
+.cred-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+.cred-group h3 {
+  font-family: var(--font-heading);
+  color: var(--color-gold-dark);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.95rem;
+}
+
+.cred-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cred-item:last-child {
+  border-bottom: none;
+}
+
+.cred-title {
+  font-weight: 700;
+  color: var(--color-navy);
+  font-size: 1.02rem;
+}
+
+.cred-sub {
+  color: var(--color-navy-soft);
+  font-size: 0.95rem;
+  margin-top: 0.15rem;
+}
+
+.cred-date {
+  color: var(--color-gold-dark);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.35rem;
+}
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+.contact-inner {
+  text-align: center;
+}
+
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 1.75rem 0 2rem;
+  font-size: 1.05rem;
+}
+
+.contact-list a {
+  color: var(--color-navy);
+  font-weight: 600;
+}
+
+.contact-list a:hover {
+  color: var(--color-gold-dark);
+}
+
+.contact-lead {
+  color: var(--color-navy-soft);
+  max-width: 55ch;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: var(--color-navy-soft);
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Responsive: side-by-side hero on wider screens
+   ========================================================================== */
+@media (min-width: 768px) {
+  .hero-inner {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .hero-bio {
+    max-width: 52ch;
+  }
+
+  .hero-actions {
+    justify-content: flex-start;
+  }
+
+  .headshot {
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+  }
+
+  .cred-columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
