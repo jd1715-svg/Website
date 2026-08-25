@@ -14,6 +14,7 @@
       <span class="nav-name">Jeremy Moore</span>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#game">Play</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -57,6 +58,34 @@
           <div class="hero-actions">
             <a class="btn btn-primary" href="assets/resume/Jeremy-Moore-PMP-Resume.pdf" download>Download Resume (PDF)</a>
             <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Geography Game -->
+    <section id="game">
+      <div class="section-inner game-inner">
+        <h2>Test Your Geography</h2>
+        <p class="game-lead">
+          I've worked and studied across four countries, and spent years supporting programs
+          around the world. See how well you know your flags.
+        </p>
+
+        <div class="game-card">
+          <div class="game-status">
+            <span id="game-round">Round 1 of 8</span>
+            <span id="game-score">Score: 0</span>
+          </div>
+
+          <div class="flag-display" id="game-flag" aria-hidden="true">&#127760;</div>
+          <p class="game-question">Which country does this flag belong to?</p>
+
+          <div class="game-options" id="game-options"></div>
+
+          <div class="game-result" id="game-result" hidden>
+            <p class="game-result-text" id="game-result-text"></p>
+            <button class="btn btn-primary" id="game-replay">Play Again</button>
           </div>
         </div>
       </div>
